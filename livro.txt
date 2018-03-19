@@ -1,0 +1,3 @@
+Managing Projects with GNU Make
+GDB Pocket Reference
+Version control with Git 
