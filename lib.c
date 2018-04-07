@@ -19,3 +19,13 @@ void menu() {
   printf("3) Operações com Big Numbers;\n");
   printf("4) Sair;\n");
 }
+
+void menuBigNumber() {
+	printf("1) Size of BigNumber;\n");
+	printf("2) Voltar atrás;\n");
+}
+
+int clean_stdin() {
+  while (getchar()!='\n');
+  return 1;
+}

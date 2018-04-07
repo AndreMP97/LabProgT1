@@ -4,5 +4,7 @@
 void enterPrompt();
 void clearScreen();
 void menu();
+void menuBigNumber();
+int clean_stdin();
 
 #endif

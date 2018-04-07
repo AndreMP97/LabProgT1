@@ -27,7 +27,7 @@ List tail(List l) {
     printf("Lista vazia!\n");
     exit(-1);
   }
-  return l->next;
+  return l -> next;
 }
 
 void printlist(List l) {

@@ -30,16 +30,44 @@ BigNumber rest(BigNumber n) {
   return n -> next;
 }
 
+BigNumber add(int x, BigNumber n) {
+  struct _bignum *temp = newBigNum(x,NULL);
+  struct _bignum *last = rest(n);
+  if (n -> next == NULL) {
+    n -> next = temp;
+    return n;
+  }
+  while (last -> next != NULL) {
+    last = last -> next;
+  }
+  last -> next = temp;
+  return n;
+}
+
 void printBN(BigNumber n) {
   if (n == NULL) {
     printf("BigNumber não encontrado!\n");
     exit(-1);
   }
   struct _bignum *temp = rest(n);
-  printf("%d ", first(n));
+  printf("%d", first(n));
   while (temp != NULL) {
-    printf("%d ", first(temp));
+    printf("%d", first(temp));
     temp = temp -> next;
   }
   printf("\n");
+}
+
+int size(BigNumber n) {
+  if (n == NULL) {
+    printf("BigNumber não encontrado!\n");
+    exit(-1);
+  }
+  int conta=1;
+  struct _bignum *temp = rest(n);
+  while (temp != NULL) {
+    conta++;
+    temp = temp -> next;
+  }
+  return conta;
 }
