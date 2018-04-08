@@ -130,7 +130,7 @@ List sumList(List l1, List l2, int *carry) {
 }
 
 void addCarry(List l1, List curr, int *carry, List result) {
-  int sum, conta = 0;
+  int sum;
   while (curr != NULL) {
     sum = l1 -> n + *carry;
     *carry = sum/10;
@@ -162,7 +162,7 @@ List addList(List l1, List l2) {
     }
     printlist(l2);
     result = sumList(l1, l2, &carry);
-    printlist(curr);
+    for (curr = l1; diff--; curr = curr -> next);
     addCarry(l1, curr, &carry, result);
   }
   if (carry) {
