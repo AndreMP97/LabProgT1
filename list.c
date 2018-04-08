@@ -140,12 +140,17 @@ List sumList(List l1, List l2, int *carry) {
 
 void addCarry(List l1, List curr, int *carry, List result) {
   int sum;
-  while (curr != NULL) {
-    sum = l1 -> n + *carry;
-    *carry = sum/10;
-    sum = sum%10;
-    result = addLast(sum,result);
-    curr = curr -> next;
+  if (*carry > 0) {
+    while (curr != NULL) {
+      sum = l1 -> n + *carry;
+      *carry = sum/10;
+      sum = sum%10;
+      result = addLast(sum,result);
+      curr = curr -> next;
+    }
+  }
+  else {
+    result = addLast(curr -> n, result);
   }
 }
 
@@ -166,7 +171,6 @@ List addList(List l1, List l2) {
     if (size1 < size2) {
       swapList(l1,l2);
     }
-    printlist(l2);
     result = sumList(l1, l2, &carry);
     for(int s = size2; s > 0; s--){
       curr = curr -> next;

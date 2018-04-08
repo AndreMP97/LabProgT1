@@ -95,13 +95,6 @@ BigNumber sumBN(BigNumber n1, BigNumber n2) {
  else {
    List l1 = BigNumbertoList(n1), l2 = BigNumbertoList(n2), result = (List) malloc(sizeof(*result));
    result = addList(l1,l2);
-   printf("DEBUG\n");
-   printf("Lista 1 = ");
-   printlist(l1);
-   printf("Lista 2 = ");
-   printlist(l2);
-   printf("Lista 3 = ");
-   printlist(result);
    r = ListtoBN(result);
  }
  return r;

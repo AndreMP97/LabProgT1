@@ -97,6 +97,7 @@ void BNumoptions(int opt) {
       char buffer[MAX];
       int len;
       int arr[MAX];
+      clearScreen();
       setbuf(stdin, NULL);
       printf("BigNumber n1 = ");
   	  fgets(buffer, MAX, stdin);
@@ -105,7 +106,6 @@ void BNumoptions(int opt) {
         arr[i] = buffer[i] - '0';
       }
       BigNumber n1 = parseBN(arr,len);
-      printBN(n1);
       setbuf(stdin, NULL);
       printf("BigNumber n2 = ");
   	  fgets(buffer, MAX, stdin);
@@ -114,7 +114,7 @@ void BNumoptions(int opt) {
         arr[i] = buffer[i] - '0';
       }
       BigNumber n2 = parseBN(arr,len);
-      printBN(n2);
+      clearScreen();
       printf("Soma n1 + n2 = ");
       printBN(sumBN(n1,n2));
       /*BigNumber n1 = newBigNum(9,(newBigNum(9,newBigNum(9,newBigNum(9,NULL)))));
