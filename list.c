@@ -115,6 +115,15 @@ List BigNumbertoList(BigNumber n) {
   return l;
 }
 
+BigNumber ListtoBN(List l) {
+  List temp = l;
+  BigNumber n = newBigNum(temp -> n, NULL);
+  while ((temp = temp -> next) != NULL) {
+    n = newBigNum(temp -> n, n);
+  }
+  return n;
+}
+
 List sumList(List l1, List l2, int *carry) {
   if (l2 == NULL) {
     return NULL;
@@ -141,7 +150,7 @@ void addCarry(List l1, List curr, int *carry, List result) {
 }
 
 List addList(List l1, List l2) {
-  List curr;
+  List curr = l1;
   List result = (List)malloc(sizeof(*result));
   if (l1 == NULL) {
     return l2;
@@ -154,13 +163,14 @@ List addList(List l1, List l2) {
     result = sumList(l1, l2, &carry);
   }
   else {
-    int diff = abs(size1-size2);
     if (size1 < size2) {
       swapList(l1,l2);
     }
     printlist(l2);
     result = sumList(l1, l2, &carry);
-    for (curr = l1; diff--; curr = curr -> next);
+    for(int s = size2; s > 0; s--){
+      curr = curr -> next;
+    }
     addCarry(l1, curr, &carry, result);
   }
   if (carry) {

@@ -18,6 +18,7 @@ List append(List l1, List l2);
 void swapList(List l1, List l2);
 int member(int x, List l);
 List BigNumbertoList(BigNumber n);
+BigNumber ListtoBN(List l);
 List sumList(List l1, List l2, int *carry);
 void addCarry(List l1, List curr, int *carry, List result);
 List addList(List l1, List l2);

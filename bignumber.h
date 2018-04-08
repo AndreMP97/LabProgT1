@@ -9,6 +9,7 @@ typedef struct _bignum {
 BigNumber newBigNum(int elem, BigNumber rest);
 int first(BigNumber n);
 BigNumber rest(BigNumber n);
+BigNumber parseBN(int arr[], int len);
 BigNumber push(int x, BigNumber n);
 BigNumber addNumber(int x, BigNumber n);
 void printBN(BigNumber n);

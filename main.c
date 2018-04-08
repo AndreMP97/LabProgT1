@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <limits.h>
+#include <string.h>
 #include "lib.h"
 #include "fib.h"
-//#include "list.h"
+#include "list.h"
 #include "bignumber.h"
+#define MAX 10000
 
 void options(int opt);
 void show();
@@ -91,11 +94,33 @@ void showBN() {
 void BNumoptions(int opt) {
   switch (opt) {
     case 1: {
-      int first, x;
-      clearScreen();
-      //BigNumber n1 = newBigNum(9,(newBigNum(9,newBigNum(9,newBigNum(9,NULL)))));
+      char buffer[MAX];
+      int len;
+      int arr[MAX];
+      setbuf(stdin, NULL);
+      printf("BigNumber n1 = ");
+  	  fgets(buffer, MAX, stdin);
+      len = strlen(buffer) - 1;
+      for (int i = 0; i < len; i++) {
+        arr[i] = buffer[i] - '0';
+      }
+      BigNumber n1 = parseBN(arr,len);
+      printBN(n1);
+      setbuf(stdin, NULL);
+      printf("BigNumber n2 = ");
+  	  fgets(buffer, MAX, stdin);
+      len = strlen(buffer) - 1;
+      for (int i = 0; i < len; i++) {
+        arr[i] = buffer[i] - '0';
+      }
+      BigNumber n2 = parseBN(arr,len);
+      printBN(n2);
+      printf("Soma n1 + n2 = ");
+      printBN(sumBN(n1,n2));
+      /*BigNumber n1 = newBigNum(9,(newBigNum(9,newBigNum(9,newBigNum(9,NULL)))));
       BigNumber n3 = newBigNum(9,(newBigNum(9,newBigNum(9,NULL))));
-      //BigNumber n4 = newBigNum(1,(newBigNum(2,NULL)));
+      BigNumber n5 = newBigNum(9,(newBigNum(9,newBigNum(9,newBigNum(9,newBigNum(9,NULL))))));
+      BigNumber n4 = newBigNum(1,(newBigNum(2,NULL)));
       BigNumber n2 = newBigNum(4,(newBigNum(9,NULL)));
       printf("BigNumber n1 = ");
       printBN(n1);
@@ -105,6 +130,7 @@ void BNumoptions(int opt) {
       printBN(sumBN(n1,n2));
       printBN(sumBN(n3,n2));
       printBN(sumBN(n4,n2));
+      printBN(sumBN(n5,n2));*/
       enterPrompt();
       showBN();
       break;

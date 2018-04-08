@@ -21,7 +21,7 @@ void menu() {
 }
 
 void menuBigNumber() {
-	printf("1) Size of BigNumber;\n");
+	printf("1) Adicionar dois BigNumbers;\n");
 	printf("2) Voltar atrás;\n");
 }
 

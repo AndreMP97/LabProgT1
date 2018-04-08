@@ -31,6 +31,17 @@ BigNumber rest(BigNumber n) {
   return n -> next;
 }
 
+BigNumber parseBN(int arr[], int len) {
+  if (len == 0) {
+    printf("***ERRO*** Tamanho 0... a abortar...\n");
+  }
+  BigNumber n = newBigNum(arr[0],NULL);
+  for (int i = 1; i < len; i++) {
+    n = addNumber(arr[i],n);
+  }
+  return n;
+}
+
 BigNumber addNumber(int x, BigNumber n) {
   struct _bignum *temp = newBigNum(x,NULL);
   struct _bignum *last = rest(n);
@@ -74,21 +85,24 @@ int size(BigNumber n) {
 }
 
 BigNumber sumBN(BigNumber n1, BigNumber n2) {
+  BigNumber r = (BigNumber) malloc(sizeof(*r));
   if (n1 == NULL) {
-    return n2;
+    r = n2;
   }
   else if (n2 == NULL) {
-    return n1;
+    r = n1;
   }
  else {
    List l1 = BigNumbertoList(n1), l2 = BigNumbertoList(n2), result = (List) malloc(sizeof(*result));
    result = addList(l1,l2);
+   printf("DEBUG\n");
    printf("Lista 1 = ");
    printlist(l1);
    printf("Lista 2 = ");
    printlist(l2);
    printf("Lista 3 = ");
    printlist(result);
+   r = ListtoBN(result);
  }
- return NULL;
+ return r;
 }
