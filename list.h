@@ -11,6 +11,7 @@ typedef struct _list {
 List newList(int h, List rest);
 int head(List l);
 List tail(List l);
+List addLast(int x, List l);
 void printlist(List l);
 int length(List l);
 List append(List l1, List l2);

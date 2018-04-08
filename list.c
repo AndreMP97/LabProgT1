@@ -31,6 +31,20 @@ List tail(List l) {
   return l -> next;
 }
 
+List addLast(int x, List l) {
+  struct _list *temp = newList(x,NULL);
+  struct _list *last = tail(l);
+  if (l -> next == NULL) {
+    l -> next = temp;
+    return l;
+  }
+  while (last -> next != NULL) {
+    last = last -> next;
+  }
+  last -> next = temp;
+  return l;
+}
+
 void printlist(List l) {
   if (l == NULL) {
     printf("Lista vazia!\n");
@@ -111,21 +125,20 @@ List sumList(List l1, List l2, int *carry) {
   *carry = sum/10;
   sum = sum%10;
   result -> n = sum;
-  printf("head(l1) = %d | head(l2) = %d | sum = %d\n",head(l1), head(l2), sum);
   result -> next = sumList(l1 -> next, l2 -> next, carry);
-  printf("Debug list = ");
-  printlist(result);
   return result;
 }
 
 void addCarry(List l1, List curr, int *carry, List result) {
-  int sum;
-  if (l1 != curr) {
-    addCarry(l1 -> next, curr, carry, result);
+  int sum, conta = 0;
+  while (curr != NULL) {
     sum = l1 -> n + *carry;
     *carry = sum/10;
     sum = sum%10;
-    result = newList(sum,result);
+    result = addLast(sum,result);
+    printf("Curr list = ");
+    printlist(curr);
+    curr = curr -> next;
   }
 }
 
@@ -147,20 +160,13 @@ List addList(List l1, List l2) {
     if (size1 < size2) {
       swapList(l1,l2);
     }
-    printf("***DEBUG*** SIZE1 > SIZE2\n");
-    printf("Lista 1 = ");
-    printlist(l1);
-    printf("Lista 2 = ");
     printlist(l2);
-    //for (curr = l1; diff--; curr = curr -> next);
     result = sumList(l1, l2, &carry);
-    addCarry(l1, l2, &carry, result);
+    printlist(curr);
+    addCarry(l1, curr, &carry, result);
   }
   if (carry) {
-    printf("Carry = %d\n",carry);
-    result = newList(carry,result);
+    result = addLast(carry,result);
   }
-  printf("Debug list FINAL = ");
-  printlist(result);
   return result;
 }

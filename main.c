@@ -93,7 +93,7 @@ void BNumoptions(int opt) {
     case 1: {
       int first, x;
       clearScreen();
-      BigNumber n1 = newBigNum(1,(newBigNum(2,newBigNum(3,NULL))));
+      BigNumber n1 = newBigNum(9,(newBigNum(9,newBigNum(9,newBigNum(9,NULL)))));
       //BigNumber n1 = newBigNum(1,(newBigNum(2,NULL)));
       BigNumber n2 = newBigNum(4,(newBigNum(9,NULL)));
       printf("BigNumber n1 = ");
