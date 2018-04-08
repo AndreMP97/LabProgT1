@@ -136,8 +136,6 @@ void addCarry(List l1, List curr, int *carry, List result) {
     *carry = sum/10;
     sum = sum%10;
     result = addLast(sum,result);
-    printf("Curr list = ");
-    printlist(curr);
     curr = curr -> next;
   }
 }

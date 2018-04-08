@@ -94,8 +94,8 @@ void BNumoptions(int opt) {
       int first, x;
       clearScreen();
       //BigNumber n1 = newBigNum(9,(newBigNum(9,newBigNum(9,newBigNum(9,NULL)))));
-      BigNumber n1 = newBigNum(9,(newBigNum(9,newBigNum(9,NULL))));
-      //BigNumber n1 = newBigNum(1,(newBigNum(2,NULL)));
+      BigNumber n3 = newBigNum(9,(newBigNum(9,newBigNum(9,NULL))));
+      //BigNumber n4 = newBigNum(1,(newBigNum(2,NULL)));
       BigNumber n2 = newBigNum(4,(newBigNum(9,NULL)));
       printf("BigNumber n1 = ");
       printBN(n1);
@@ -103,6 +103,8 @@ void BNumoptions(int opt) {
       printBN(n2);
       printf("***RESULTADO***\n");
       printBN(sumBN(n1,n2));
+      printBN(sumBN(n3,n2));
+      printBN(sumBN(n4,n2));
       enterPrompt();
       showBN();
       break;
