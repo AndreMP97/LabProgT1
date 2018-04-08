@@ -9,10 +9,11 @@ typedef struct _bignum {
 BigNumber newBigNum(int elem, BigNumber rest);
 int first(BigNumber n);
 BigNumber rest(BigNumber n);
-BigNumber add(int x, BigNumber n);
+BigNumber push(int x, BigNumber n);
+BigNumber addNumber(int x, BigNumber n);
 void printBN(BigNumber n);
 int size(BigNumber n);
-//BigNumber add
+BigNumber sumBN(BigNumber n1, BigNumber n2);
 //BigNumber sub
 //BigNumber mult
 //BigNumber div

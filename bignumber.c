@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "bignumber.h"
+#include "list.h"
 #include <stdbool.h>
 
 BigNumber newBigNum(int elem, BigNumber rest) {
@@ -30,7 +31,7 @@ BigNumber rest(BigNumber n) {
   return n -> next;
 }
 
-BigNumber add(int x, BigNumber n) {
+BigNumber addNumber(int x, BigNumber n) {
   struct _bignum *temp = newBigNum(x,NULL);
   struct _bignum *last = rest(n);
   if (n -> next == NULL) {
@@ -47,7 +48,7 @@ BigNumber add(int x, BigNumber n) {
 void printBN(BigNumber n) {
   if (n == NULL) {
     printf("BigNumber não encontrado!\n");
-    exit(-1);
+    return;
   }
   struct _bignum *temp = rest(n);
   printf("%d", first(n));
@@ -70,4 +71,25 @@ int size(BigNumber n) {
     temp = temp -> next;
   }
   return conta;
+}
+
+BigNumber sumBN(BigNumber n1, BigNumber n2) {
+  if (n1 == NULL) {
+    return n2;
+  }
+  else if (n2 == NULL) {
+    return n1;
+  }
+ else {
+   List l1 = BigNumbertoList(n1), l2 = BigNumbertoList(n2), result = (List) malloc(sizeof(*result));
+   result = addList(l1,l2);
+   printf("***DEBUG***\n");
+   printf("Lista 1 = ");
+   printlist(l1);
+   printf("Lista 2 = ");
+   printlist(l2);
+   printf("Lista 3 = ");
+   printlist(result);
+ }
+ return NULL;
 }

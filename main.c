@@ -3,7 +3,7 @@
 #include <limits.h>
 #include "lib.h"
 #include "fib.h"
-#include "list.h"
+//#include "list.h"
 #include "bignumber.h"
 
 void options(int opt);
@@ -92,18 +92,16 @@ void BNumoptions(int opt) {
   switch (opt) {
     case 1: {
       int first, x;
-      char *b;
       clearScreen();
+      BigNumber n1 = newBigNum(1,(newBigNum(2,newBigNum(3,NULL))));
+      //BigNumber n1 = newBigNum(1,(newBigNum(2,NULL)));
+      BigNumber n2 = newBigNum(4,(newBigNum(9,NULL)));
       printf("BigNumber n1 = ");
-      scanf("%1d",&first);
-      BigNumber n = newBigNum(first,NULL);
-      //printBN(n);
-      while(scanf("%1d",&x) > 0) {
-        printf("Debug: %d\n",x);
-        n = add(x,n);
-      }
-      printBN(n);
-      printf("Tamanho n1 = %d\n",size(n));
+      printBN(n1);
+      printf("BigNumber n2 = ");
+      printBN(n2);
+      printf("***RESULTADO***\n");
+      printBN(sumBN(n1,n2));
       enterPrompt();
       showBN();
       break;
